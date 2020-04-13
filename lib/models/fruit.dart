@@ -19,7 +19,7 @@ class Fruit {
 final List<Fruit> fruits = [
   Fruit(
       1,
-      'Big single avocado fresh imported fruit from the mexican avocado collection',
+      'Big single avocado fresh imported fruit from the mexican ',
       '18.78',
       ImageAssetPath.avocadoImage,
       '89',

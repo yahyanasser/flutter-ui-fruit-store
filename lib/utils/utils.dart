@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_store/Function/Language.dart';
+import 'package:provider/provider.dart';
 
 class Images {
   static const appleImage =
@@ -26,16 +28,16 @@ class Fonts {
 }
 
 class Texts {
-  static const header = const Text(
-    "All Fruits",
-    style: TextStyle(
-        fontFamily: Fonts.primaryFont,
-        fontSize: 25.0,
-        fontWeight: FontWeight.bold),
-  );
+  // static const header = const Text(
+  //   Language.vocabulary['cat'][Provider.of<Language>(context).lang],
+  //   style: TextStyle(
+  //       fontFamily: Fonts.primaryFont,
+  //       fontSize: 25.0,
+  //       fontWeight: FontWeight.bold),
+  // );
 
-  static const subHeader = const Text(
-    "Sales",
+  static const inboxHeader = const Text(
+    "",
     style: TextStyle(
       fontSize: 20.0,
       fontFamily: Fonts.primaryFont,
@@ -53,7 +55,17 @@ class TabText {
       fontSize: 17.0,
     ),
   );
-
+static Widget tabbedText(catName){
+return
+Text(
+    catName,
+    style: TextStyle(
+      fontFamily: Fonts.primaryFont,
+      fontWeight: FontWeight.bold,
+      fontSize: 17.0,
+    ),
+  );
+}
   static const tabText2 = const Text(
     "Grapes",
     style: TextStyle(

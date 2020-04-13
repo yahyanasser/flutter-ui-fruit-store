@@ -1,50 +1,26 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_store/Function/Api.dart';
 import 'package:fruit_store/Function/Language.dart';
 import 'package:fruit_store/Function/NavBartIndex.dart';
-import 'package:fruit_store/models/User.dart';
-import 'package:fruit_store/views/BottomNavigtionBar.dart';
-import 'package:fruit_store/views/Dialogs.dart';
-import 'package:fruit_store/views/Profile.dart';
-import 'package:fruit_store/views/inbox.dart';
-import 'package:fruit_store/views/order.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:fruit_store/_routing/routes.dart';
-import 'package:fruit_store/models/fruit.dart';
+import 'package:fruit_store/models/Product.dart';
+import 'package:fruit_store/models/User.dart';
 import 'package:fruit_store/utils/utils.dart';
+import 'package:fruit_store/views/Dialogs.dart';
 import 'package:fruit_store/widgets/fruits.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 
-import 'HomeTab.dart';
-import 'LoginPage.dart';
-
-class FruitAppHomePage extends StatefulWidget {
-  @override
-  _FruitAppHomePageState createState() => _FruitAppHomePageState();
-}
-
-class _FruitAppHomePageState extends State<FruitAppHomePage> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
+class Produects extends StatelessWidget {
+  int product;
+  Produects(this.product);
   @override
   Widget build(BuildContext context) {
-     var lang=    Provider.of<Language>(context);
+    var lang=    Provider.of<Language>(context);
     bool ar=lang.lang=='ar';
-
-    // TabController(vsync: this, length: myTabs.length);
-// var lang=    Provider.of<Language>(context);
-
-     Widget appBar=AppBar(leading: IconButton(icon: Icon(LineIcons.language,color: Colors.black,), onPressed: (){
-Dialogs.LanguageDialog(context);
-
-     }),elevation: 0,backgroundColor: Theme.of(context).scaffoldBackgroundColor,title: Row(
+    Widget appbar=AppBar(leading: IconButton(icon: Icon(!ar ?LineIcons.long_arrow_left:LineIcons.long_arrow_right,color: Colors.black,), onPressed: (){Navigator.pop(context);}),elevation: 0,backgroundColor: Theme.of(context).scaffoldBackgroundColor,title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
              
@@ -99,34 +75,11 @@ Dialogs.LanguageDialog(context);
                       });
           },
         ),],);
-    // DefaultTabController
-    return Directionality(
-          child: Scaffold(
-          appBar:Provider.of<NavBarIndex>(context).currentIndex==0? appBar:null,
-           bottomNavigationBar: BottomBar(),
-           body: selectedTap()),
-           textDirection: lang.dir,
-    );
+         
+                    return Directionality(child: Scaffold(appBar: appbar,body: FruitsWidget(product),), textDirection: lang.dir,);
   }
 
-  selectedTap() {
-    switch (Provider.of<NavBarIndex>(context).currentIndex) {
-      case 0:
-        return HomeTab();
+   
 
-        break;
-      case 1:
-        return 
-      user.id != -1?Orders():LoginPage();
-        
-        break;
-      case 3:
-        return user.id != -1 ? Profile() : LoginPage();
-        break;
-        case 2:
-        return user.id != -1 ? Inbox() : LoginPage();
-        break;
-      default:
-    }
-  }
+
 }
